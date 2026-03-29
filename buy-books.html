@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse and buy affordable second-hand engineering textbooks on BookBridge. Filter by branch, subject, and price.">
+    <title>Buy Books – BookBridge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo"><img src="assets/logo.png" alt="BookBridge"
+                style="width:70px;height:70px;border-radius:14px;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Logo">
+                <span class="nav-logo-text">Book<span>Bridge</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buy-books.html" class="active">Buy Books</a></li>
+                <li><a href="sell-book.html">Sell Book</a></li>
+                <li><a href="track-order.html">Track Order</a></li>
+                <li><a href="customer-care.html">Support</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="login.html" class="btn-ghost">Login</a>
+                <a href="sell-book.html" class="btn-secondary">+ Sell Book</a>
+            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">🏠 Home</a><a href="buy-books.html">📚 Buy Books</a>
+        <a href="sell-book.html">💰 Sell Book</a><a href="track-order.html">🚚 Track Order</a>
+        <a href="customer-care.html">🎧 Support</a>
+        <div class="mobile-btns"><a href="login.html" class="btn btn-outline btn-sm">Login</a><a href="sell-book.html"
+                class="btn btn-primary btn-sm">+ Sell</a></div>
+    </div>
+
+    <!-- Page Header -->
+    <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:100px 0 40px;">
+        <div class="container">
+            <div class="hero-badge animate-fadeInDown" style="display:inline-flex;margin-bottom:16px;">📚 Best Deals on
+                Textbooks</div>
+            <h1 style="color:white;" class="animate-fadeInUp">Browse Engineering Books</h1>
+            <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;margin-top:12px;"
+                class="animate-fadeInUp delay-200">
+                Discover affordable second-hand textbooks from verified sellers at your college and beyond.
+            </p>
+        </div>
+    </div>
+
+    <!-- Filters Bar -->
+    <div
+        style="background:white;padding:24px 0;border-bottom:1px solid var(--border);position:sticky;top:70px;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.05);">
+        <div class="container">
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                <div class="search-bar" style="flex:1;min-width:200px;">
+                    <span style="font-size:1.1rem;">🔍</span>
+                    <input type="text" id="searchBooks" placeholder="Search title, author, subject…">
+                </div>
+                <select class="filter-select" id="filterBranch" style="min-width:150px;"></select>
+                <select class="filter-select" id="filterSubject" style="min-width:130px;"></select>
+                <select class="filter-select" id="filterCondition" style="min-width:120px;">
+                    <option value="">Any Condition</option>
+                    <option value="New">🟢 New</option>
+                    <option value="Good">🔵 Good</option>
+                    <option value="Used">🟡 Used</option>
+                </select>
+                <select class="filter-select" id="filterPrice" style="min-width:130px;">
+                    <option value="">Any Price</option>
+                    <option value="200">Under ₹200</option>
+                    <option value="300">Under ₹300</option>
+                    <option value="400">Under ₹400</option>
+                    <option value="500">Under ₹500</option>
+                </select>
+                <select class="filter-select" id="sortBooks" style="min-width:140px;">
+                    <option value="">Sort By</option>
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="price_desc">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                    <option value="savings">Best Savings</option>
+                </select>
+                <button id="clearFilters" class="btn btn-sm"
+                    style="background:rgba(229,62,62,0.1);color:var(--danger);white-space:nowrap;">✕ Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <section class="section" style="padding-top:40px;">
+        <div class="container">
+            <div
+                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+                <h2 style="font-size:1.2rem;color:var(--primary);">📚 Available Books <span id="booksCount"
+                        style="color:var(--text-light);font-weight:400;font-size:1rem;"></span></h2>
+                <a href="sell-book.html" class="btn btn-primary btn-sm">+ List Your Book</a>
+            </div>
+            <div class="books-grid" id="booksGrid">
+                <!-- Populated by buy.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <span class="chat-unread" style="display:none;">1</span>
+        <button class="chat-toggle-btn" id="chatToggleBtn" title="Chat with Support">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-bot-avatar">BB</div>
+                <div class="chat-bot-info">
+                    <h4>BookBridge Assistant</h4>
+                    <div class="chat-bot-status"><span class="dot"></span>
+                        <p>Online</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-wrap">
+                <textarea class="chat-input" id="chatInput" placeholder="Ask about books…" rows="1"></textarea>
+                <button class="chat-send" id="chatSend">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top:60px;">
+        <div class="container">
+            <div class="footer-bottom" style="border-top:none;padding-top:0;">
+                <p>© 2026 BookBridge. Made for Students.</p>
+                <div style="display:flex;gap:16px;">
+                    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Home</a>
+                    <a href="sell-book.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Sell Book</a>
+                    <a href="customer-care.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/books.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/buy.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Apply URL params to filters
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const branch = params.get('branch');
+            const q = params.get('q');
+            if (branch) { const el = document.getElementById('filterBranch'); if (el) { el.value = branch; el.dispatchEvent(new Event('change')); } }
+            if (q) { const el = document.getElementById('searchBooks'); if (el) { el.value = q; el.dispatchEvent(new Event('input')); } }
+        });
+    </script>
+</body>
+
+</html>

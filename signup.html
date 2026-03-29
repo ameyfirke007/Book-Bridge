@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sign up for BookBridge – Join thousands of students saving money on academic textbooks.">
+    <title>Sign Up – BookBridge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo"><img src="assets/logo.png" alt="BookBridge"
+                style="width:70px;height:70px;border-radius:14px;"></div>
+    </div>
+
+    <div class="auth-page">
+        <!-- Left: Branding Panel -->
+        <div class="auth-panel">
+            <div class="auth-circle"></div>
+            <div class="auth-circle"></div>
+            <div class="auth-panel-content animate-fadeInLeft">
+                <div class="auth-brand">
+                    <img src="assets/logo.png" alt="BookBridge Logo">
+                    <div class="auth-brand-name">Book<span>Bridge</span></div>
+                </div>
+                <h2>Join 10,000+ Students! 🎓</h2>
+                <p>Create your free account and start saving money on textbooks while helping your college community.
+                </p>
+                <div class="auth-features">
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">🆓</span>
+                        <span class="feat-text">100% Free to join — no credit card needed</span>
+                    </div>
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">📚</span>
+                        <span class="feat-text">Access hundreds of engineering textbooks</span>
+                    </div>
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">💵</span>
+                        <span class="feat-text">Earn money by selling your used books</span>
+                    </div>
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">✅</span>
+                        <span class="feat-text">Verified sellers and secure transactions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Signup Form -->
+        <div class="auth-form-panel">
+            <div class="auth-form-container animate-fadeInRight">
+                <div class="auth-form-header">
+                    <h1>Create Account 🚀</h1>
+                    <p>Join <span class="highlight">BookBridge</span> and start saving on textbooks today.</p>
+                </div>
+
+                <div class="alert alert-error" id="formAlert" style="display:none;"></div>
+
+                <form id="signupForm" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">Full Name <span>*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">👤</span>
+                            <input type="text" id="fullName" class="form-control" placeholder="Ravi Kumar"
+                                autocomplete="name" required>
+                        </div>
+                        <div class="form-error" id="fullNameError" style="display:none;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address <span>*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">📧</span>
+                            <input type="email" id="email" class="form-control" placeholder="you@college.edu"
+                                autocomplete="email" required>
+                        </div>
+                        <div class="form-error" id="emailError" style="display:none;"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="college">College Name <span>*</span></label>
+                            <div class="input-group">
+                                <span class="input-icon">🏫</span>
+                                <input type="text" id="college" class="form-control" placeholder="IIT Bombay" required>
+                            </div>
+                            <div class="form-error" id="collegeError" style="display:none;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="course">Course / Branch <span>*</span></label>
+                            <div class="input-group">
+                                <span class="input-icon">📐</span>
+                                <select id="course" class="form-control" required>
+                                    <option value="">Select Branch</option>
+                                    <option value="Computer Science Engineering">CSE</option>
+                                    <option value="Information Technology">IT</option>
+                                    <option value="Mechanical Engineering">Mechanical</option>
+                                    <option value="Electrical Engineering">Electrical</option>
+                                    <option value="Electronics & Communication">ECE</option>
+                                    <option value="Civil Engineering">Civil</option>
+                                    <option value="Chemical Engineering">Chemical</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-error" id="courseError" style="display:none;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password <span>*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" class="form-control"
+                                placeholder="Create a strong password" autocomplete="new-password" required>
+                            <span class="input-icon input-icon-right toggle-password" data-target="password">👁️</span>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <div class="strength-text" id="strengthText"></div>
+                        </div>
+                        <div class="form-error" id="passwordError" style="display:none;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="confirmPassword">Confirm Password <span>*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="confirmPassword" class="form-control"
+                                placeholder="Re-enter your password" required>
+                            <span class="input-icon input-icon-right toggle-password"
+                                data-target="confirmPassword">👁️</span>
+                        </div>
+                        <div class="form-error" id="confirmPasswordError" style="display:none;"></div>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy
+                                Policy</a></label>
+                    </div>
+                    <div class="form-error" id="termsError" style="display:none;"></div>
+
+                    <button type="submit" class="auth-submit">
+                        <span class="btn-text">🚀 Create My Account</span>
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Sign in →</a></p>
+                    <p style="margin-top:8px;"><a href="index.html">← Back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/books.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sell your used engineering textbooks on BookBridge – Earn money from unused academic books.">
+    <title>Sell a Book – BookBridge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo"><img src="assets/logo.png" alt="BookBridge"
+                style="width:70px;height:70px;border-radius:14px;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Logo">
+                <span class="nav-logo-text">Book<span>Bridge</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buy-books.html">Buy Books</a></li>
+                <li><a href="sell-book.html" class="active">Sell Book</a></li>
+                <li><a href="track-order.html">Track Order</a></li>
+                <li><a href="customer-care.html">Support</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="login.html" class="btn-ghost">Login</a>
+                <a href="dashboard.html" class="btn-secondary">Dashboard</a>
+            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">🏠 Home</a><a href="buy-books.html">📚 Buy Books</a>
+        <a href="sell-book.html">💰 Sell Book</a><a href="track-order.html">🚚 Track Order</a>
+        <a href="customer-care.html">🎧 Support</a>
+        <div class="mobile-btns"><a href="login.html" class="btn btn-outline btn-sm">Login</a><a href="dashboard.html"
+                class="btn btn-primary btn-sm">Dashboard</a></div>
+    </div>
+
+    <!-- Page Header -->
+    <div
+        style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:100px 0 40px;text-align:center;">
+        <div class="container">
+            <div class="hero-badge animate-fadeInDown" style="justify-content:center;margin:0 auto 16px;">💰 Start
+                Earning Today</div>
+            <h1 style="color:white;" class="animate-fadeInUp">List Your Book for Sale</h1>
+            <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;" class="animate-fadeInUp delay-200">Sell your used
+                textbooks and earn money effortlessly. Your listing goes live instantly!</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <!-- Success Message -->
+            <div class="alert alert-success" id="successMsg" style="display:none;margin-bottom:24px;">
+                ✅ <strong>Book listed successfully!</strong> Your book is now live on BookBridge. <a
+                    href="buy-books.html">View your listing →</a>
+            </div>
+
+            <div style="display:grid;grid-template-columns:3fr 2fr;gap:32px;align-items:start;">
+                <!-- Form -->
+                <div class="card scroll-animate">
+                    <h2 style="color:var(--primary);margin-bottom:8px;">📝 Book Details</h2>
+                    <p style="color:var(--text-mid);margin-bottom:28px;font-size:0.9rem;">Fill in the details below.
+                        Fields marked with * are required.</p>
+
+                    <form id="sellBookForm" novalidate>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div class="form-group">
+                                <label class="form-label">Book Title <span style="color:var(--danger);">*</span></label>
+                                <input type="text" id="bookTitle" class="form-control"
+                                    placeholder="e.g. Engineering Mathematics">
+                                <div class="form-error" id="bookTitleError"
+                                    style="display:none;color:var(--danger);font-size:0.8rem;margin-top:4px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Author Name <span
+                                        style="color:var(--danger);">*</span></label>
+                                <input type="text" id="author" class="form-control" placeholder="e.g. B.S. Grewal">
+                                <div class="form-error" id="authorError"
+                                    style="display:none;color:var(--danger);font-size:0.8rem;margin-top:4px;"></div>
+                            </div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div class="form-group">
+                                <label class="form-label">Engineering Branch <span
+                                        style="color:var(--danger);">*</span></label>
+                                <select id="branch" class="form-control">
+                                    <option value="">Select Branch</option>
+                                    <option value="CSE">Computer Science (CSE)</option>
+                                    <option value="Mechanical">Mechanical Engineering</option>
+                                    <option value="Electrical">Electrical Engineering</option>
+                                    <option value="Civil">Civil Engineering</option>
+                                    <option value="IT">Information Technology (IT)</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="form-error" id="branchError"
+                                    style="display:none;color:var(--danger);font-size:0.8rem;margin-top:4px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Subject <span style="color:var(--danger);">*</span></label>
+                                <input type="text" id="subject" class="form-control" placeholder="e.g. Data Structures">
+                                <div class="form-error" id="subjectError"
+                                    style="display:none;color:var(--danger);font-size:0.8rem;margin-top:4px;"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Book Condition <span style="color:var(--danger);">*</span></label>
+                            <div style="display:flex;gap:12px;">
+                                <label style="flex:1;cursor:pointer;">
+                                    <input type="radio" name="conditionRadio" value="New" style="display:none;"
+                                        onchange="document.getElementById('condition').value='New';SellPage.updatePreview()">
+                                    <div class="condition-opt"
+                                        style="border:2px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all 0.2s;">
+                                        <div style="font-size:1.5rem;">🟢</div>
+                                        <div style="font-size:0.8rem;font-weight:700;color:var(--success);">New</div>
+                                    </div>
+                                </label>
+                                <label style="flex:1;cursor:pointer;">
+                                    <input type="radio" name="conditionRadio" value="Good" style="display:none;"
+                                        onchange="document.getElementById('condition').value='Good';SellPage.updatePreview()">
+                                    <div class="condition-opt"
+                                        style="border:2px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all 0.2s;">
+                                        <div style="font-size:1.5rem;">🔵</div>
+                                        <div style="font-size:0.8rem;font-weight:700;color:#2B6CB0;">Good</div>
+                                    </div>
+                                </label>
+                                <label style="flex:1;cursor:pointer;">
+                                    <input type="radio" name="conditionRadio" value="Used" style="display:none;"
+                                        onchange="document.getElementById('condition').value='Used';SellPage.updatePreview()">
+                                    <div class="condition-opt"
+                                        style="border:2px solid var(--border);border-radius:10px;padding:12px;text-align:center;transition:all 0.2s;">
+                                        <div style="font-size:1.5rem;">🟡</div>
+                                        <div style="font-size:0.8rem;font-weight:700;color:var(--warning);">Used</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <input type="hidden" id="condition" value="Good">
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div class="form-group">
+                                <label class="form-label">Original Price (₹) <span
+                                        style="color:var(--danger);">*</span></label>
+                                <input type="number" id="originalPrice" class="form-control" placeholder="e.g. 650"
+                                    min="1">
+                                <div class="form-error" id="originalPriceError"
+                                    style="display:none;color:var(--danger);font-size:0.8rem;margin-top:4px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Selling Price (₹) <span
+                                        style="color:var(--danger);">*</span></label>
+                                <input type="number" id="sellingPrice" class="form-control" placeholder="e.g. 299"
+                                    min="1">
+                                <div class="form-error" id="sellingPriceError"
+                                    style="display:none;color:var(--danger);font-size:0.8rem;margin-top:4px;"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Book Description</label>
+                            <textarea id="description" class="form-control" rows="3"
+                                placeholder="Describe the book condition, edition, any markings, etc…"
+                                style="resize:vertical;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Book Image</label>
+                            <div id="imagePreviewWrap" style="display:none;margin-bottom:12px;">
+                                <img id="bookImagePreview" src="assets/book-placeholder.png" alt="Preview"
+                                    style="width:100px;height:130px;object-fit:cover;border-radius:8px;border:2px solid var(--border);">
+                            </div>
+                            <input type="file" id="bookImage" class="form-control" accept="image/*"
+                                style="padding:8px;">
+                            <div class="form-hint">Upload a clear photo of the book cover (optional but recommended)
+                            </div>
+                        </div>
+
+                        <button type="submit" class="auth-submit" style="margin-top:8px;">
+                            <span class="btn-text">🚀 List My Book for Sale</span>
+                            <span class="spinner"></span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Live Preview -->
+                <div style="position:sticky;top:90px;">
+                    <h3
+                        style="color:var(--primary);margin-bottom:16px;font-size:1rem;text-transform:uppercase;letter-spacing:1px;">
+                        👁️ Live Preview</h3>
+                    <div class="book-card" style="animation:none;transform:none;">
+                        <div class="book-img-wrap">
+                            <img id="prev_img" src="assets/book-placeholder.png" alt="Book Preview"
+                                style="width:100%;height:200px;object-fit:cover;">
+                            <span class="book-condition cond-good" id="prev_condBadge">Good</span>
+                            <span class="verified-badge">✓ Verified</span>
+                        </div>
+                        <div class="book-body">
+                            <div class="book-branch" id="prev_branch">Branch • Subject</div>
+                            <h3 class="book-title" id="prev_title">Book Title</h3>
+                            <p class="book-author" id="prev_author">by Author</p>
+                            <div class="book-prices">
+                                <span class="book-original-price" id="prev_orig">₹0</span>
+                                <span class="book-selling-price" id="prev_sell">₹0</span>
+                                <span class="book-savings" id="prev_savings">0% off</span>
+                            </div>
+                            <div class="book-seller">
+                                <div class="seller-avatar" id="prev_sellerInitial">You</div>
+                                <div class="seller-info">
+                                    <div class="seller-name" id="prev_seller">Your Name</div>
+                                    <div class="seller-college" id="prev_college">Your College</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top:20px;background:rgba(246,173,85,0.1);border:1px solid rgba(246,173,85,0.3);border-radius:var(--radius);padding:16px;">
+                        <h4 style="color:var(--secondary-dark);margin-bottom:8px;">💡 Selling Tips</h4>
+                        <ul style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;padding-left:16px;">
+                            <li>Price 40–60% below original for faster sales</li>
+                            <li>Upload a clear book cover photo</li>
+                            <li>Mention edition number in the description</li>
+                            <li>List as "New" only if genuinely unused</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <span class="chat-unread" style="display:none;">1</span>
+        <button class="chat-toggle-btn" id="chatToggleBtn" title="Need help listing your book?">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-bot-avatar">BB</div>
+                <div class="chat-bot-info">
+                    <h4>BookBridge Assistant</h4>
+                    <div class="chat-bot-status"><span class="dot"></span>
+                        <p>Online</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-wrap">
+                <textarea class="chat-input" id="chatInput" placeholder="Ask for selling tips…" rows="1"></textarea>
+                <button class="chat-send" id="chatSend">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/books.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/sell.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Condition radio visual feedback
+        document.querySelectorAll('input[name="conditionRadio"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('.condition-opt').forEach(el => {
+                    el.style.border = '2px solid var(--border)';
+                    el.style.background = '';
+                });
+                radio.nextElementSibling.style.border = '2px solid var(--secondary)';
+                radio.nextElementSibling.style.background = 'rgba(246,173,85,0.08)';
+            });
+        });
+        // Set default condition
+        document.querySelector('input[name="conditionRadio"][value="Good"]').checked = true;
+        document.querySelector('input[name="conditionRadio"][value="Good"]').nextElementSibling.style.border = '2px solid var(--secondary)';
+    </script>
+</body>
+
+</html>

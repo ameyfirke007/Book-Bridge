@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Track your BookBridge orders in real-time. See Ordered, Packed, Out for Delivery, and Delivered status.">
+    <title>Track Order – BookBridge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo"><img src="assets/logo.png" alt="BookBridge"
+                style="width:70px;height:70px;border-radius:14px;"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Logo">
+                <span class="nav-logo-text">Book<span>Bridge</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buy-books.html">Buy Books</a></li>
+                <li><a href="sell-book.html">Sell Book</a></li>
+                <li><a href="track-order.html" class="active">Track Order</a></li>
+                <li><a href="customer-care.html">Support</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="login.html" class="btn-ghost">Login</a>
+                <a href="dashboard.html" class="btn-secondary">Dashboard</a>
+            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">🏠 Home</a><a href="buy-books.html">📚 Buy Books</a>
+        <a href="sell-book.html">💰 Sell Book</a><a href="track-order.html">🚚 Track Order</a>
+        <a href="customer-care.html">🎧 Support</a>
+        <div class="mobile-btns"><a href="login.html" class="btn btn-outline btn-sm">Login</a><a href="dashboard.html"
+                class="btn btn-primary btn-sm">Dashboard</a></div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:100px 0 40px;">
+        <div class="container">
+            <div class="hero-badge animate-fadeInDown" style="display:inline-flex;margin-bottom:16px;">🚚 Real-Time
+                Tracking</div>
+            <h1 style="color:white;" class="animate-fadeInUp">Track Your Orders</h1>
+            <p style="color:rgba(255,255,255,0.75);font-size:1.1rem;margin-top:12px;"
+                class="animate-fadeInUp delay-200">
+                Follow your textbook delivery from order placement to doorstep.
+            </p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <!-- Login prompt for guests -->
+            <div id="loginPrompt" style="display:none;" class="card scroll-animate"
+                style="text-align:center;padding:60px;">
+                <div class="empty-state">
+                    <div class="empty-icon">🔐</div>
+                    <h3>Login to Track Orders</h3>
+                    <p>Please login to view your order history and track deliveries.</p>
+                    <a href="login.html" class="btn btn-primary" style="margin-top:20px;">Login Now</a>
+                </div>
+            </div>
+
+            <!-- Orders container -->
+            <div id="ordersContainer">
+                <div style="text-align:center;padding:40px;">
+                    <div style="font-size:2rem;margin-bottom:12px;">⏳</div>
+                    <p style="color:var(--text-mid);">Loading your orders…</p>
+                </div>
+            </div>
+
+            <!-- Guest demo: Add sample order -->
+            <div id="demoSection" style="display:none;margin-top:24px;">
+                <div class="card"
+                    style="text-align:center;padding:40px;background:linear-gradient(135deg,rgba(26,54,93,0.03),rgba(246,173,85,0.05));">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">🛒</div>
+                    <h3 style="color:var(--primary);">Want to see tracking in action?</h3>
+                    <p style="color:var(--text-mid);margin-bottom:24px;">Browse our collection and purchase a book to
+                        see order tracking!</p>
+                    <a href="buy-books.html" class="btn btn-primary btn-lg">Browse Books</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <span class="chat-unread" style="display:none;">1</span>
+        <button class="chat-toggle-btn" id="chatToggleBtn" title="Order help">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-bot-avatar">BB</div>
+                <div class="chat-bot-info">
+                    <h4>BookBridge Assistant</h4>
+                    <div class="chat-bot-status"><span class="dot"></span>
+                        <p>Online</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-wrap">
+                <textarea class="chat-input" id="chatInput" placeholder="Ask about your order…" rows="1"></textarea>
+                <button class="chat-send" id="chatSend">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/books.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/order.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        const user = Auth.getCurrentUser();
+        if (!user) {
+            document.getElementById('loginPrompt').style.display = 'block';
+            document.getElementById('ordersContainer').style.display = 'none';
+            document.getElementById('demoSection').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

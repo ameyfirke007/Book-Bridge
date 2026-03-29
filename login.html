@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Login to BookBridge – Access your dashboard to buy, sell, and track academic textbooks.">
+    <title>Login – BookBridge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo"><img src="assets/logo.png" alt="BookBridge"
+                style="width:70px;height:70px;border-radius:14px;"></div>
+    </div>
+
+    <div class="auth-page">
+        <!-- Left: Branding Panel -->
+        <div class="auth-panel">
+            <div class="auth-circle"></div>
+            <div class="auth-circle"></div>
+            <div class="auth-panel-content animate-fadeInLeft">
+                <div class="auth-brand">
+                    <img src="assets/logo.png" alt="BookBridge Logo">
+                    <div class="auth-brand-name">Book<span>Bridge</span></div>
+                </div>
+                <h2>Welcome Back, Scholar! 📚</h2>
+                <p>Login to access your dashboard, browse affordable textbooks, and manage your listings.</p>
+                <div class="auth-features">
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">💰</span>
+                        <span class="feat-text">Save up to 70% on engineering textbooks</span>
+                    </div>
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">🤝</span>
+                        <span class="feat-text">Connect with verified sellers from top colleges</span>
+                    </div>
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">🚚</span>
+                        <span class="feat-text">Real-time order tracking at every step</span>
+                    </div>
+                    <div class="auth-feature-item">
+                        <span class="feat-icon">📱</span>
+                        <span class="feat-text">Fully mobile-friendly platform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Login Form -->
+        <div class="auth-form-panel">
+            <div class="auth-form-container animate-fadeInRight">
+                <div class="auth-form-header">
+                    <h1>Sign In 👋</h1>
+                    <p>Enter your credentials to access your <span class="highlight">BookBridge</span> account.</p>
+                </div>
+
+                <!-- Alert Message -->
+                <div class="alert alert-error" id="formAlert" style="display:none;"></div>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address <span>*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">📧</span>
+                            <input type="email" id="email" class="form-control" placeholder="your@email.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password <span>*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" class="form-control" placeholder="Your password"
+                                autocomplete="current-password" required>
+                            <span class="input-icon input-icon-right toggle-password" data-target="password"
+                                title="Show/hide password">👁️</span>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                        <a href="#"
+                            style="margin-left:auto;font-size:0.85rem;color:var(--primary);font-weight:600;">Forgot
+                            password?</a>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        <span class="btn-text">Login to BookBridge</span>
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+
+                <div class="auth-divider"><span>or continue with</span></div>
+
+                <div style="display:flex;gap:12px;">
+                    <button onclick="demoLogin()" class="btn btn-dark btn-full" style="flex:1;padding:12px;">
+                        🎓 Demo Login
+                    </button>
+                    <a href="signup.html" class="btn btn-full"
+                        style="flex:1;padding:12px;background:rgba(26,54,93,0.08);color:var(--primary);font-weight:600;text-align:center;border-radius:var(--radius);">
+                        📝 Register
+                    </a>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html">Create one for free →</a></p>
+                    <p style="margin-top:8px;"><a href="index.html">← Back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/books.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // If already logged in, redirect to dashboard
+        if (Auth.getCurrentUser()) window.location.href = 'dashboard.html';
+
+        // Demo login using Spring Boot API
+        async function demoLogin() {
+            const alertEl = document.getElementById('formAlert');
+            const btn = document.querySelector('.auth-submit');
+
+            // Try to login first with demo credentials
+            const result = await Auth.login('demo@bookbridge.edu', 'demo123');
+            if (result.success) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // If login fails, create the demo account first then login
+            const signupResult = await Auth.signup({
+                fullName: 'Demo Student',
+                email:    'demo@bookbridge.edu',
+                college:  'IIT Bombay',
+                course:   'Computer Science Engineering',
+                password: 'demo123'
+            });
+            if (signupResult.success) {
+                window.location.href = 'dashboard.html';
+            } else {
+                if (alertEl) {
+                    alertEl.style.display = 'flex';
+                    alertEl.textContent = 'Demo login failed. Please sign up manually.';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

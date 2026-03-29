@@ -1,61 +1,178 @@
-# 📚 BookBridge – Student Book Exchange Platform
+# 📚 BookBridge – Student Textbook Marketplace
 
-BookBridge is a full-stack web application designed to help students buy and sell used academic books easily within their college community. It connects buyers and sellers, making textbooks more affordable and accessible.
+> **Buy, Sell & Exchange Second-Hand Academic Books Within Your College Community**
 
-## 🚀 Features
+BookBridge is a digital platform that connects students to buy and sell used engineering textbooks at affordable prices. Save up to 70% on academic books while helping fellow students learn!
 
-* 🔐 User Authentication (Signup/Login)
-* 📘 Sell Books with detailed information
-* 🛒 Buy Books from other students
-* 📦 Order Management System
-* 📊 User Dashboard with activity tracking
-* 🏫 College-based marketplace (e.g., Terna Engineering College)
-* 💬 Chatbot integration (via n8n)
-* 📱 Responsive and user-friendly UI
+---
 
-## 🛠️ Tech Stack
+## ✨ Features
 
-* **Frontend:** HTML, CSS, JavaScript
-* **Backend:** Spring Boot (Java)
-* **Database:** MySQL
-* **API Communication:** REST APIs
-* **Tools:** Maven, Git, VS Code
+| Feature | Description |
+|---|---|
+| 🔐 **Auth System** | Sign up / Login with localStorage-based custom authentication |
+| 📚 **Buy Books** | Browse books with filters by branch, subject, price, condition |
+| 💰 **Sell Books** | List used textbooks with image upload and live preview |
+| 🚚 **Order Tracking** | Real-time status tracker (Ordered → Packed → Out for Delivery → Delivered) |
+| 📊 **Dashboard** | Sidebar with stats, listings, purchases, profile management |
+| 🤖 **AI Chatbot** | OpenRouter-powered support bot with smart fallbacks |
+| 🎧 **Customer Care** | FAQ accordion + Contact form |
+| 📱 **Responsive Design** | Mobile-first, works on all screen sizes |
+| ✨ **Animations** | Scroll animations, card hover effects, button ripples, counters |
 
-## 🔗 Project Architecture
+---
 
-Frontend (HTML/JS) → Spring Boot Backend → MySQL Database
+## 🎨 Color Palette
 
-## ⚙️ How to Run
+| Color | Hex | Usage |
+|---|---|---|
+| Navy Blue | `#1A365D` | Navbar, headers, primary UI |
+| Academic Gold | `#F6AD55` | Buttons, CTA, highlights |
+| Soft White | `#F7FAFC` | Page backgrounds |
+| Success Green | `#38A169` | Price tags, verified badges |
 
-1. Clone the repository
-2. Create a MySQL database named `bookbridge`
-3. Run the provided SQL scripts to create tables and insert data
-4. Configure `application.properties` with your DB credentials
-5. Start backend using:
+---
 
+## 📁 Folder Structure
+
+```
+BookBridge/
+│
+├── index.html           ← Home page (Hero, Search, Categories, Featured Books)
+├── login.html           ← Login page
+├── signup.html          ← Registration page
+├── sell-book.html       ← Book listing form with live preview
+├── buy-books.html       ← Browse all books with filters
+├── track-order.html     ← Order tracking with progress steps
+├── customer-care.html   ← FAQ, Contact Form, AI Chatbot
+├── dashboard.html       ← User dashboard (stats, listings, purchases)
+│
+├── css/
+│   ├── style.css        ← Global styles, navbar, hero, footer, cards
+│   ├── auth.css         ← Login/signup page styles
+│   ├── dashboard.css    ← Dashboard layout, sidebar, stat cards
+│   └── animations.css   ← Keyframes, chatbot, order tracker, skeletons
+│
+├── js/
+│   ├── auth.js          ← Authentication (signup, login, logout, session)
+│   ├── books.js         ← Book CRUD, filtering, rendering, UI helpers
+│   ├── sell.js          ← Sell book form logic + live preview
+│   ├── buy.js           ← Buy page filters, search, sort, purchase flow
+│   ├── order.js         ← Order tracking, status progression
+│   ├── dashboard.js     ← Dashboard: stats, listings, purchases, profile
+│   └── chatbot.js       ← AI chatbot via OpenRouter + fallback responses
+│
+├── data/
+│   └── books-data.json  ← 12 sample engineering textbooks seed data
+│
+├── assets/
+│   ├── logo.png         ← BookBridge logo
+│   └── book-placeholder.png ← Default book cover image
+│
+└── README.md
+```
+
+---
+
+## 🚀 How to Run the Project
+
+### Option 1: Open Directly (Simplest)
+> ⚠️ Some browsers block `fetch()` for local files. Use Option 2 for best experience.
+
+1. Navigate to the project folder
+2. Double-click `index.html` to open in your browser
+
+### Option 2: Use VS Code Live Server (Recommended)
+1. Install [Visual Studio Code](https://code.visualstudio.com/)
+2. Install the **Live Server** extension
+3. Right-click on `index.html` → **"Open with Live Server"**
+4. The site will open at `http://127.0.0.1:5500`
+
+### Option 3: Python HTTP Server
+```bash
+# Navigate to the project folder in terminal
+cd BookBridge
+
+# Python 3
+python -m http.server 8080
+
+# Open in browser: http://localhost:8080
+```
+
+### Option 4: Node.js
+```bash
+npx http-server . -p 8080
+# Open in browser: http://localhost:8080
+```
+
+---
+
+## 🧪 Test Accounts & Sample Data
+
+- **Sample Books**: 12 engineering books are auto-seeded from `data/books-data.json` on first load
+- **Create Account**: Use the Sign Up page with any email/password
+- **Demo Login**: Use the "Demo Login" button on the Login page for instant access
+
+---
+
+## 🤖 AI Chatbot Setup (Optional)
+
+The chatbot works out of the box with smart fallback responses. For real AI responses:
+
+1. Create a free account at [OpenRouter.ai](https://openrouter.ai)
+2. Generate a free API key
+3. Open `js/chatbot.js` and set:
+   ```javascript
+   const API_KEY = 'your-openrouter-api-key-here';
    ```
-   mvn spring-boot:run
-   ```
-6. Open in browser:
+4. The chatbot uses the free `mistralai/mistral-7b-instruct` model
 
-   ```
-   http://localhost:8080/index.html
-   ```
+---
 
-## 📌 Key Highlights
+## 📱 Pages Overview
 
-* Transitioned from localStorage-based system to full backend integration
-* Implemented REST APIs for real-time data handling
-* Modular project structure with clean separation of concerns
-* Scalable design for multi-college expansion
+| Page | URL | Description |
+|---|---|---|
+| Home | `index.html` | Hero, search, categories, featured books, how-it-works |
+| Login | `login.html` | Email + password auth, demo login |
+| Sign Up | `signup.html` | Registration with password strength indicator |
+| Buy Books | `buy-books.html` | Filtered book grid with search and sort |
+| Sell Book | `sell-book.html` | Book listing form with live card preview |
+| Track Order | `track-order.html` | Animated 4-step delivery progress tracker |
+| Customer Care | `customer-care.html` | FAQ, contact form, AI chatbot |
+| Dashboard | `dashboard.html` | User stats, listings, purchases, profile |
 
-## 📈 Future Enhancements
+---
 
-* Payment Gateway Integration
-* Real-time Chat between users
-* Advanced search & filtering
-* Mobile App version
+## 🔮 Future Improvements
+
+- [ ] **Real Backend** – Replace localStorage with Node.js + MongoDB or Firebase
+- [ ] **Payment Gateway** – Integrate Razorpay / Stripe for secure transactions
+- [ ] **Real-time Chat** – Socket.io based buyer-seller messaging
+- [ ] **Book Exchange System** – Allow bartering without money
+- [ ] **College SSO** – Sign in with institutional email verification
+- [ ] **Mobile App** – React Native or Flutter app
+- [ ] **Admin Panel** – Manage listings, users, orders
+- [ ] **Review System** – Buyer ratings for sellers
+- [ ] **Image CDN** – Cloudinary integration for book images
+- [ ] **Notification System** – Push notifications for order updates
+
+---
+
+## 🛠 Technologies Used
+
+- **HTML5** – Semantic markup, accessibility attributes
+- **CSS3** – Custom properties, Grid, Flexbox, animations
+- **Vanilla JavaScript** – ES6+ modules, async/await, localStorage
+- **Google Fonts** – Inter + Poppins typography
+- **OpenRouter API** – Free AI model (Mistral 7B) for chatbot
+
+---
 
 ## 👨‍💻 Author
 
-Developed by Amey Firke
+**BookBridge** – Built as a demonstration of a complete, production-quality frontend MVP using only HTML, CSS, and JavaScript. No frameworks required!
+
+---
+
+*© 2026 BookBridge – Made with ❤️ for Students*

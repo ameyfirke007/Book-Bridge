@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BookBridge – Buy and sell second-hand academic engineering textbooks within your college community. Save money on textbooks today!">
+  <title>BookBridge – Affordable Academic Textbooks for Students</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-logo">
+    <img src="assets/logo.png" alt="BookBridge" style="width:80px;height:80px;border-radius:16px;">
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="BookBridge Logo">
+      <span class="nav-logo-text">Book<span>Bridge</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="buy-books.html">Buy Books</a></li>
+      <li><a href="sell-book.html">Sell Book</a></li>
+      <li><a href="track-order.html">Track Order</a></li>
+      <li><a href="customer-care.html">Support</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="signup.html" class="btn-secondary">Get Started</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">🏠 Home</a>
+  <a href="buy-books.html">📚 Buy Books</a>
+  <a href="sell-book.html">💰 Sell Book</a>
+  <a href="track-order.html">🚚 Track Order</a>
+  <a href="customer-care.html">🎧 Support</a>
+  <div class="mobile-btns">
+    <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+    <a href="signup.html" class="btn btn-primary btn-sm">Sign Up Free</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-floating-shapes">
+    <div class="shape"></div><div class="shape"></div><div class="shape"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge animate-fadeInDown">🎓 Trusted by 10,000+ Students</div>
+      <h1 class="hero-title animate-fadeInUp">
+        Save Big on <span class="highlight">Academic Books</span> – Buy, Sell & Exchange
+      </h1>
+      <p class="hero-subtitle animate-fadeInUp delay-200">
+        BookBridge connects students across colleges to buy and sell second-hand engineering textbooks at unbeatable prices. Save up to 70% on every book!
+      </p>
+      <div class="hero-btns animate-fadeInUp delay-300">
+        <a href="buy-books.html" class="btn btn-primary btn-lg">🛒 Browse Books</a>
+        <a href="sell-book.html" class="btn btn-outline btn-lg">💰 Sell Your Books</a>
+      </div>
+      <div class="hero-stats animate-fadeInUp delay-400">
+        <div class="stat-item">
+          <div class="stat-number" id="heroCount1">0</div>
+          <div class="stat-label">Books Listed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="heroCount2">0</div>
+          <div class="stat-label">Students Saved</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="heroCount3">₹0</div>
+          <div class="stat-label">Money Saved</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-book-stack">
+        <div class="book-card-float">
+          <div class="mini-book-img" style="background:linear-gradient(135deg,#1A365D,#2A4A7F);display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📘</div>
+          <div class="mini-book-title">Engineering Mathematics</div>
+          <div class="mini-book-price">
+            <span class="price-original">₹650</span>
+            <span class="price-sell">₹299</span>
+          </div>
+        </div>
+        <div class="book-card-float">
+          <div class="mini-book-img" style="background:linear-gradient(135deg,#2D3748,#4A5568);display:flex;align-items:center;justify-content:center;font-size:1.8rem;">💻</div>
+          <div class="mini-book-title">Computer Networks</div>
+          <div class="mini-book-price">
+            <span class="price-original">₹720</span>
+            <span class="price-sell">₹320</span>
+          </div>
+        </div>
+        <div class="book-card-float">
+          <div class="mini-book-img" style="background:linear-gradient(135deg,#38A169,#48BB78);display:flex;align-items:center;justify-content:center;font-size:1.8rem;">⚡</div>
+          <div class="mini-book-title">Digital Electronics</div>
+          <div class="mini-book-price">
+            <span class="price-original">₹480</span>
+            <span class="price-sell">₹220</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Section -->
+<section class="search-section" id="search">
+  <div class="container">
+    <div class="search-wrapper scroll-animate">
+      <h2 class="search-title">🔍 Find Your Textbook</h2>
+      <div class="search-bar">
+        <span style="font-size:1.2rem;">🔍</span>
+        <input type="text" id="heroSearch" placeholder="Search by title, author, subject..." autocomplete="off">
+        <button class="btn btn-primary" id="heroSearchBtn">Search</button>
+      </div>
+      <div class="search-filters">
+        <select class="filter-select" id="heroBranch">
+          <option value="">All Branches</option>
+          <option value="CSE">Computer Science (CSE)</option>
+          <option value="Mechanical">Mechanical Engineering</option>
+          <option value="Electrical">Electrical Engineering</option>
+          <option value="Civil">Civil Engineering</option>
+          <option value="IT">Information Technology (IT)</option>
+        </select>
+        <select class="filter-select" id="heroCondition">
+          <option value="">Any Condition</option>
+          <option value="New">🟢 New</option>
+          <option value="Good">🔵 Good</option>
+          <option value="Used">🟡 Used</option>
+        </select>
+        <select class="filter-select" id="heroPrice">
+          <option value="">Any Price</option>
+          <option value="200">Under ₹200</option>
+          <option value="350">Under ₹350</option>
+          <option value="500">Under ₹500</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section categories" id="categories">
+  <div class="container">
+    <div class="section-header scroll-animate">
+      <div class="section-tag">Browse by Branch</div>
+      <h2>All Engineering Branches</h2>
+      <p>Find textbooks specific to your course and branch</p>
+      <div class="divider"></div>
+    </div>
+    <div class="categories-grid">
+      <a href="buy-books.html?branch=CSE" class="category-card scroll-animate delay-100">
+        <div class="cat-icon" style="background:rgba(26,54,93,0.1);">💻</div>
+        <div class="cat-name">Computer Science</div>
+        <div class="cat-count">CSE / IT</div>
+      </a>
+      <a href="buy-books.html?branch=Mechanical" class="category-card scroll-animate delay-200">
+        <div class="cat-icon" style="background:rgba(246,173,85,0.15);">⚙️</div>
+        <div class="cat-name">Mechanical</div>
+        <div class="cat-count">ME / Auto</div>
+      </a>
+      <a href="buy-books.html?branch=Electrical" class="category-card scroll-animate delay-300">
+        <div class="cat-icon" style="background:rgba(56,161,105,0.12);">⚡</div>
+        <div class="cat-name">Electrical</div>
+        <div class="cat-count">EE / ECE</div>
+      </a>
+      <a href="buy-books.html?branch=Civil" class="category-card scroll-animate delay-400">
+        <div class="cat-icon" style="background:rgba(214,158,46,0.15);">🏗️</div>
+        <div class="cat-name">Civil</div>
+        <div class="cat-count">CE / Structural</div>
+      </a>
+      <a href="buy-books.html?branch=IT" class="category-card scroll-animate delay-500">
+        <div class="cat-icon" style="background:rgba(159,122,234,0.15);">🌐</div>
+        <div class="cat-name">Information Tech</div>
+        <div class="cat-count">IT / MCA</div>
+      </a>
+      <a href="buy-books.html" class="category-card scroll-animate delay-600">
+        <div class="cat-icon" style="background:rgba(229,62,62,0.1);">📖</div>
+        <div class="cat-name">All Subjects</div>
+        <div class="cat-count">Mathematics & More</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Books -->
+<section class="section" id="featured" style="background:white;">
+  <div class="container">
+    <div class="section-header scroll-animate">
+      <div class="section-tag">Hot Deals</div>
+      <h2>Featured Books</h2>
+      <p>Best deals on popular engineering textbooks right now</p>
+      <div class="divider"></div>
+    </div>
+    <div class="books-grid" id="featuredGrid">
+      <!-- Loaded by JS -->
+      <div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton-body"><div class="skeleton skeleton-line wide"></div><div class="skeleton skeleton-line mid"></div><div class="skeleton skeleton-line short"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton-body"><div class="skeleton skeleton-line wide"></div><div class="skeleton skeleton-line mid"></div><div class="skeleton skeleton-line short"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton-body"><div class="skeleton skeleton-line wide"></div><div class="skeleton skeleton-line mid"></div><div class="skeleton skeleton-line short"></div></div></div>
+    </div>
+    <div class="text-center" style="margin-top:40px;">
+      <a href="buy-books.html" class="btn btn-dark btn-lg scroll-animate">View All Books →</a>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section how-it-works" id="how">
+  <div class="container">
+    <div class="section-header scroll-animate">
+      <div class="section-tag">Simple & Fast</div>
+      <h2>How BookBridge Works</h2>
+      <p>Trade textbooks with fellow students in 3 simple steps</p>
+      <div class="divider"></div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card scroll-animate">
+        <div class="step-number">1</div>
+        <div class="step-icon">📝</div>
+        <h3>Sign Up Free</h3>
+        <p>Create your account with your college email. Verification is instant and completely free!</p>
+      </div>
+      <div class="step-card scroll-animate delay-200">
+        <div class="step-number">2</div>
+        <div class="step-icon">📚</div>
+        <h3>Browse or List</h3>
+        <p>Search for books you need by branch and subject. Or list your unused textbooks to earn money!</p>
+      </div>
+      <div class="step-card scroll-animate delay-400">
+        <div class="step-number">3</div>
+        <div class="step-icon">🤝</div>
+        <h3>Buy or Exchange</h3>
+        <p>Connect with sellers, negotiate prices, and complete your book purchase at a huge discount.</p>
+      </div>
+      <div class="step-card scroll-animate delay-600">
+        <div class="step-number">4</div>
+        <div class="step-icon">🚚</div>
+        <h3>Track & Receive</h3>
+        <p>Real-time order tracking from placement to delivery. Get notified at every step!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="scroll-animate">Ready to Save on Textbooks?</h2>
+    <p class="scroll-animate delay-200">Join thousands of students already saving money on academic books through BookBridge.</p>
+    <div class="cta-btns scroll-animate delay-400">
+      <a href="signup.html" class="btn btn-primary btn-lg">🚀 Get Started Free</a>
+      <a href="buy-books.html" class="btn btn-outline btn-lg">📚 Browse Books</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <img src="assets/logo.png" alt="BookBridge" style="height:36px;width:36px;border-radius:8px;">
+          <span style="font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:white;">Book<span style="color:var(--secondary);">Bridge</span></span>
+        </div>
+        <p>Connecting students with affordable second-hand textbooks. Save money, earn money, and help your college community.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="buy-books.html">Buy Books</a></li>
+          <li><a href="sell-book.html">Sell Book</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Branches</h4>
+        <ul>
+          <li><a href="buy-books.html?branch=CSE">Computer Science</a></li>
+          <li><a href="buy-books.html?branch=Mechanical">Mechanical</a></li>
+          <li><a href="buy-books.html?branch=Electrical">Electrical</a></li>
+          <li><a href="buy-books.html?branch=Civil">Civil</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="customer-care.html">Customer Care</a></li>
+          <li><a href="track-order.html">Track Order</a></li>
+          <li><a href="customer-care.html#faq">FAQ</a></li>
+          <li><a href="customer-care.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BookBridge. Built with ❤️ for Students.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="Twitter">🐦</a>
+        <a href="#" class="social-link" title="Instagram">📸</a>
+        <a href="#" class="social-link" title="LinkedIn">💼</a>
+        <a href="#" class="social-link" title="GitHub">💻</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Chatbot Widget -->
+<div class="chatbot-widget" id="chatbotWidget">
+  <span class="chat-unread" style="display:none;">1</span>
+  <button class="chat-toggle-btn" id="chatToggleBtn" title="Chat with Support">📖</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-bot-avatar">BB</div>
+      <div class="chat-bot-info">
+        <h4>BookBridge Assistant</h4>
+        <div class="chat-bot-status"><span class="dot"></span><p>Online</p></div>
+      </div>
+      <button class="chat-close" id="chatClose">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-wrap">
+      <textarea class="chat-input" id="chatInput" placeholder="Ask me anything..." rows="1"></textarea>
+      <button class="chat-send" id="chatSend">▶</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/books.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/chatbot.js"></script>
+<script>
+  // Home page specific logic
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Hide preloader manually since seedBooks is removed
+    const pl = document.getElementById('pageLoader');
+    if (pl) {
+      setTimeout(() => pl.classList.add('hidden'), 500);
+    }
+    
+    UI.init();
+
+    // Animated counters
+    const allBooks = await Books.getAllBooks();
+    setTimeout(() => {
+      Books.animateCounter(document.getElementById('heroCount1'), allBooks.length, 1500);
+      Books.animateCounter(document.getElementById('heroCount2'), 10240, 2000);
+      Books.animateCounter(document.getElementById('heroCount3'), 520000, 2000, '₹');
+    }, 600);
+
+    // Load featured books (first 6)
+    const featured = allBooks.slice(0, 6);
+    const grid = document.getElementById('featuredGrid');
+    if (grid && featured.length) {
+      grid.innerHTML = featured.map(b => Books.renderBookCard(b, { showBuyBtn: true })).join('');
+      setTimeout(() => {
+        grid.querySelectorAll('.scroll-animate').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 100);
+        });
+      }, 100);
+    }
+
+    // Hero search
+    document.getElementById('heroSearchBtn')?.addEventListener('click', () => {
+      const q      = document.getElementById('heroSearch')?.value || '';
+      const branch = document.getElementById('heroBranch')?.value || '';
+      const cond   = document.getElementById('heroCondition')?.value || '';
+      const price  = document.getElementById('heroPrice')?.value || '';
+      const params = new URLSearchParams({ q, branch, cond, maxPrice: price });
+      window.location.href = 'buy-books.html?' + params.toString();
+    });
+    document.getElementById('heroSearch')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('heroSearchBtn')?.click();
+    });
+  });
+
+  // BuyPage stub for home page buy buttons
+  const BuyPage = {
+    async handleBuyNow(bookId) {
+      const user = Auth.getCurrentUser();
+      if (!user) {
+        UI.showToast('Please login to purchase books!', 'warning');
+        setTimeout(() => window.location.href = 'login.html', 1500);
+        return;
+      }
+      try {
+        const res = await fetch('http://localhost:8080/api/orders/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bookId: bookId, buyerId: user.id })
+        });
+        if (res.ok) {
+          UI.showToast('Book ordered successfully! 🎉', 'success');
+          setTimeout(() => { if (confirm('View your orders now?')) window.location.href = 'track-order.html'; }, 800);
+        } else {
+          UI.showToast('Order failed. Please try again.', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        UI.showToast('Network error placing order.', 'error');
+      }
+    }
+  };
+</script>
+</body>
+</html>
